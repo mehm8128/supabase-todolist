@@ -1,10 +1,10 @@
 import {
-	Sample,
-	SampleCreateSeed,
-	SampleCreateSeedData,
-	SampleData,
-	SampleListQuery,
-	SampleListQueryData,
+	type Sample,
+	type SampleCreateSeed,
+	type SampleCreateSeedData,
+	type SampleData,
+	type SampleListQuery,
+	type SampleListQueryData,
 	parseId
 } from '@/features/sample/model/type'
 

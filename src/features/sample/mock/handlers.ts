@@ -1,7 +1,7 @@
-import { http, HttpResponse, PathParams } from 'msw'
+import { http, HttpResponse, type PathParams } from 'msw'
 
 import { mockSample, mockSampleList } from '@/features/sample/mock/data'
-import { Sample, SampleCreateSeed } from '@/features/sample/model/type'
+import type { Sample, SampleCreateSeed } from '@/features/sample/model/type'
 
 export const sampleHandlers = (apiOrigin: string) => {
 	const fetchSamples = (response?: Partial<Sample>) => {

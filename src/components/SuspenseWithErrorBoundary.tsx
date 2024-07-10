@@ -1,4 +1,4 @@
-import { ReactElement, Suspense } from 'react'
+import { type ReactElement, Suspense } from 'react'
 import { ErrorBoundary as BaseErrorBoundary } from 'react-error-boundary'
 
 export default function SuspenseWithErrorBoundary({

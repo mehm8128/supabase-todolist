@@ -1,4 +1,8 @@
-import { Sample, SampleList, parseId } from '@/features/sample/model/type'
+import {
+	type Sample,
+	type SampleList,
+	parseId
+} from '@/features/sample/model/type'
 
 export const mockSample: Sample = {
 	id: parseId('sample id'),

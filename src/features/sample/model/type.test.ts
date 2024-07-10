@@ -1,6 +1,6 @@
 import { mockSample } from '@/features/sample/mock/data'
 import {
-	SampleCreateSeed,
+	type SampleCreateSeed,
 	sampleCreateSeedSchema
 } from '@/features/sample/model/type'
 import { safeParse } from 'valibot'
