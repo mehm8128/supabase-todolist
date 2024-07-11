@@ -1,10 +1,9 @@
 'use client'
 
+import { initMock } from '@/lib/mock'
 import { KumaRegistry } from '@kuma-ui/next-plugin/registry'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Provider as JotaiProvider } from 'jotai'
-
-import { initMock } from '@/lib/mock'
 import { type ReactNode, useState } from 'react'
 
 void initMock()
