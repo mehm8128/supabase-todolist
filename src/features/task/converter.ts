@@ -10,16 +10,16 @@ import {
 	type TaskData,
 	type TaskEditSeedData,
 	type TaskListQueryData,
-	taskCreateSeedDataSchema
+	taskCreateSeedDataSchema,
+	taskEditSeedDataSchema,
+	taskListQueryDataSchema
 } from '@/features/task/model/server'
 import { parse } from 'valibot'
 
 export const convertTaskListQueryToData = (
 	query?: Partial<TaskListQuery>
 ): TaskListQueryData => {
-	return {
-		resolved: query?.resolved
-	}
+	return parse(taskListQueryDataSchema, query)
 }
 
 export const convertTaskFromData = (data: TaskData): Task => {
@@ -35,8 +35,5 @@ export const convertTaskCreateSeedToData = (
 export const convertTaskEditSeedToData = (
 	seed: TaskEditSeed
 ): TaskEditSeedData => {
-	return {
-		name: seed.name,
-		resolved: seed.resolved
-	}
+	return parse(taskEditSeedDataSchema, seed)
 }

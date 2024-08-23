@@ -21,12 +21,12 @@ const createTask = async (seed: TaskCreateSeed): Promise<Task> => {
 export const useCreateTask = () => {
 	const client = useQueryClient()
 
-	const mutation = useMutation({
+	const { mutateAsync } = useMutation({
 		mutationFn: (seed: TaskCreateSeed) => createTask(seed),
 		onSuccess: () => {
 			client.invalidateQueries({ queryKey: ['tasks'] })
 		}
 	})
 
-	return mutation
+	return mutateAsync
 }

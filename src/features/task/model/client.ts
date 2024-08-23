@@ -27,15 +27,13 @@ export const taskSchema = pipe(
 		id: taskId,
 		name: string(),
 		resolved: boolean(),
-		deadline: string(),
 		createdBy: userId,
 		createdAt: string(),
 		updatedAt: string()
 	}),
-	transform(({ id, deadline, createdBy, createdAt, updatedAt, ...rest }) => ({
+	transform(({ id, createdBy, createdAt, updatedAt, ...rest }) => ({
 		id: parseTaskId(id),
 		createdBy: parseUserId(createdBy),
-		deadline: new Date(deadline),
 		createdAt: new Date(createdAt),
 		updatedAt: new Date(updatedAt),
 		...rest
@@ -57,7 +55,6 @@ export const taskCreateSeedSchema = object({
 export type TaskCreateSeed = InferOutput<typeof taskCreateSeedSchema>
 
 export const taskEditSeedSchema = object({
-	id: taskId,
 	name: pipe(string(), minLength(1)),
 	resolved: boolean()
 })

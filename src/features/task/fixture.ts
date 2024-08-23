@@ -5,7 +5,6 @@ export const exampleTask: Task = {
 	id: parseTaskId(1),
 	name: 'todolistの作成',
 	resolved: false,
-	deadline: new Date('2021-01-01T00:00:00.000Z'),
 	createdBy: parseUserId(1),
 	createdAt: new Date('2021-01-03T00:00:00.000Z'),
 	updatedAt: new Date('2021-01-03T00:00:00.000Z')

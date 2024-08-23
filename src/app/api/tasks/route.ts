@@ -23,4 +23,3 @@ export async function POST(req: Request) {
 	const data = exampleTask
 	return Response.json(data)
 }
-

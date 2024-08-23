@@ -27,5 +27,8 @@ export const taskCreateSeedDataSchema = pick(createInsertSchema(tasks), [
 ])
 export type TaskCreateSeedData = InferOutput<typeof taskCreateSeedDataSchema>
 
-export const taskEditSeedDataSchema = pick(createInsertSchema(tasks), ['name'])
+export const taskEditSeedDataSchema = pick(createInsertSchema(tasks), [
+	'name',
+	'resolved'
+])
 export type TaskEditSeedData = InferOutput<typeof taskEditSeedDataSchema>

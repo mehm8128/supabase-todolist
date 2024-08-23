@@ -16,7 +16,6 @@ export const tasks = pgTable('tasks', {
 	id: serial('id').primaryKey(),
 	name: varchar('name', { length: 64 }).notNull(),
 	resolved: boolean('resolved').notNull(),
-	deadline: timestamp('deadline'),
 	createdBy: char('created_by')
 		.references(() => users.id)
 		.notNull(),
