@@ -1,6 +1,5 @@
 import {
 	boolean,
-	char,
 	pgTable,
 	serial,
 	timestamp,
@@ -16,9 +15,6 @@ export const tasks = pgTable('tasks', {
 	id: serial('id').primaryKey(),
 	name: varchar('name', { length: 64 }).notNull(),
 	resolved: boolean('resolved').notNull(),
-	createdBy: char('created_by')
-		.references(() => users.id)
-		.notNull(),
 	createdAt: timestamp('created_at').notNull(),
 	updatedAt: timestamp('updated_at').notNull()
 })

@@ -5,7 +5,6 @@ import {
 	type TaskCreateSeed,
 	taskCreateSeedSchema
 } from '@/features/task/model/client'
-import { parseUserId } from '@/features/user/model/client'
 import { getFormProps, getInputProps, useForm } from '@conform-to/react'
 import { getValibotConstraint, parseWithValibot } from 'conform-to-valibot'
 
@@ -14,8 +13,7 @@ export default function Page() {
 	const [form, fields] = useForm<TaskCreateSeed>({
 		constraint: getValibotConstraint(taskCreateSeedSchema),
 		defaultValue: {
-			name: '',
-			createdBy: parseUserId(1)
+			name: ''
 		},
 		onValidate({ formData }) {
 			const res = parseWithValibot(formData, {
@@ -43,7 +41,6 @@ export default function Page() {
 					</label>
 					<div id={fields.name.errorId}>{fields.name.errors}</div>
 				</div>
-				<input {...getInputProps(fields.createdBy, { type: 'hidden' })} />
 				<button type="submit">追加</button>
 			</form>
 		</div>

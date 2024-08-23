@@ -22,8 +22,7 @@ export const taskListQueryDataSchema = object({
 export type TaskListQueryData = InferOutput<typeof taskListQueryDataSchema>
 
 export const taskCreateSeedDataSchema = pick(createInsertSchema(tasks), [
-	'name',
-	'createdBy'
+	'name'
 ])
 export type TaskCreateSeedData = InferOutput<typeof taskCreateSeedDataSchema>
 

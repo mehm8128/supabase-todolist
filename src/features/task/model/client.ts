@@ -1,4 +1,3 @@
-import { parseUserId, userId } from '@/features/user/model/client'
 import {
 	type InferOutput,
 	boolean,
@@ -27,13 +26,11 @@ export const taskSchema = pipe(
 		id: taskId,
 		name: string(),
 		resolved: boolean(),
-		createdBy: userId,
 		createdAt: string(),
 		updatedAt: string()
 	}),
-	transform(({ id, createdBy, createdAt, updatedAt, ...rest }) => ({
+	transform(({ id, createdAt, updatedAt, ...rest }) => ({
 		id: parseTaskId(id),
-		createdBy: parseUserId(createdBy),
 		createdAt: new Date(createdAt),
 		updatedAt: new Date(updatedAt),
 		...rest
@@ -49,8 +46,7 @@ export const taskListQuerySchema = object({
 export type TaskListQuery = InferOutput<typeof taskListQuerySchema>
 
 export const taskCreateSeedSchema = object({
-	name: pipe(string(), minLength(1)),
-	createdBy: userId
+	name: pipe(string(), minLength(1))
 })
 export type TaskCreateSeed = InferOutput<typeof taskCreateSeedSchema>
 
