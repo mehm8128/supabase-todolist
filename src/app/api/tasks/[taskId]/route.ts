@@ -4,18 +4,6 @@ import { exampleTask } from '@/features/task/fixture'
 import type { TaskEditSeedData } from '@/features/task/model/server'
 import { eq } from 'drizzle-orm'
 
-export async function GET(
-	_: Request,
-	{ params: { taskId } }: { params: { taskId: string } }
-) {
-	const task = await db.query.tasks.findFirst({
-		where: (tasks, { eq }) => eq(tasks.id, Number(taskId))
-	})
-
-	const data = exampleTask
-	return Response.json(data)
-}
-
 export async function PATCH(
 	req: Request,
 	{ params: { taskId } }: { params: { taskId: string } }
