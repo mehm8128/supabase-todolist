@@ -21,13 +21,13 @@ export default function Form() {
 			})
 			return res
 		},
-		onSubmit(e, { submission }) {
+		async onSubmit(e, { submission }) {
 			e.preventDefault()
 			if (submission?.status !== 'success') {
 				console.error('error:', submission?.error)
 				return
 			}
-			createTask(submission.value)
+			await createTask(submission.value)
 		}
 	})
 	return (
