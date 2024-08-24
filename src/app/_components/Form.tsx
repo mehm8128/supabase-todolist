@@ -1,5 +1,7 @@
 'use client'
 
+import { Button } from '@/components/Button'
+import { Input } from '@/components/Input'
 import { useCreateTask } from '@/features/task/api/createTask'
 import {
 	type TaskCreateSeed,
@@ -7,6 +9,7 @@ import {
 } from '@/features/task/model/client'
 import { getFormProps, getInputProps, useForm } from '@conform-to/react'
 import { getValibotConstraint, parseWithValibot } from 'conform-to-valibot'
+import styles from './Form.module.scss'
 
 export default function Form() {
 	const createTask = useCreateTask()
@@ -31,15 +34,21 @@ export default function Form() {
 		}
 	})
 	return (
-		<form {...getFormProps(form)}>
-			<div>
-				<label>
+		<form {...getFormProps(form)} className={styles.form}>
+			<div className={styles.fieldWrap}>
+				<label className={styles.label}>
 					名前
-					<input {...getInputProps(fields.name, { type: 'text' })} />
+					<Input {...getInputProps(fields.name, { type: 'text' })} />
 				</label>
-				<div id={fields.name.errorId}>{fields.name.errors}</div>
+				{fields.name.errors && (
+					<div id={fields.name.errorId} className={styles.error}>
+						{fields.name.errors}
+					</div>
+				)}
 			</div>
-			<button type="submit">追加</button>
+			<Button type="submit" className={styles.addButton} variant="primary">
+				追加
+			</Button>
 		</form>
 	)
 }

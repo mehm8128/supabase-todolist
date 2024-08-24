@@ -1,0 +1,36 @@
+.button {
+	border: none;
+	padding: 0.5rem 1.5rem;
+	border-radius: 0.5rem;
+	cursor: pointer;
+
+	&.primary {
+		background-color: #8acdfc;
+		&:hover {
+			background-color: #6bb6f7;
+		}
+		&:active {
+			background-color: #4a8ec2;
+		}
+	}
+
+	&.secondary {
+		border: 1px solid #8acdfc;
+		&:hover {
+			border: 1px solid #6bb6f7;
+		}
+		&:active {
+			border: 1px solid #4a8ec2;
+		}
+	}
+
+	&.error {
+		background-color: #f56262;
+		&:hover {
+			background-color: #f54242;
+		}
+		&:active {
+			background-color: #f52222;
+		}
+	}
+}

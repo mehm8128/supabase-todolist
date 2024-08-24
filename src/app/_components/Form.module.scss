@@ -1,0 +1,21 @@
+.form {
+	width: fit-content;
+	display: grid;
+	grid-template-columns: 1fr auto;
+	align-items: center;
+	justify-items: center;
+	gap: 1rem;
+}
+.fieldWrap {
+	display: grid;
+	gap: 0.5rem;
+}
+.label {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	align-items: center;
+	gap: 0.25rem;
+}
+.error {
+	color: red;
+}
