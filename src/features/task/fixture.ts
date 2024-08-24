@@ -12,7 +12,8 @@ export const exampleTasks: Task[] = [
 	exampleTask,
 	{
 		...exampleTask,
-		id: parseTaskId(2)
+		id: parseTaskId(2),
+		resolved: true
 	},
 	{
 		...exampleTask,

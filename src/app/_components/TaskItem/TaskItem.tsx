@@ -1,45 +1,63 @@
 import { Button } from '@/components/Button/Button'
 import { Input } from '@/components/Input/Input'
 import { useDeleteTask } from '@/features/task/api/deleteTask'
-import type { Task } from '@/features/task/model/client'
+import { useEditTask } from '@/features/task/api/editTask'
+import {
+	type Task,
+	type TaskEditSeed,
+	taskEditSeedSchema
+} from '@/features/task/model/client'
 import { formatDateTime } from '@/lib/date'
-import { useState } from 'react'
+import { getFormProps, getInputProps, useForm } from '@conform-to/react'
+import { getValibotConstraint, parseWithValibot } from 'conform-to-valibot'
 import styles from './TaskItem.module.scss'
 
 export default function TaskItem({ task }: { task: Task }) {
-	const [isEditing, setIsEditing] = useState(false)
+	const editTask = useEditTask()
+	const [form, fields] = useForm<TaskEditSeed>({
+		constraint: getValibotConstraint(taskEditSeedSchema),
+		defaultValue: {
+			name: task.name,
+			resolved: task.resolved ? 'on' : 'off'
+		},
+		onValidate({ formData }) {
+			const res = parseWithValibot(formData, {
+				schema: taskEditSeedSchema
+			})
+			console.log(res)
+			return res
+		},
+		async onSubmit(e, { submission }) {
+			e.preventDefault()
+			if (submission?.status !== 'success') {
+				console.error('error:', submission?.error)
+				return
+			}
+			await editTask({ id: task.id, seed: submission.value })
+		}
+	})
 
 	const { mutateAsync: deleteTask } = useDeleteTask()
-	const handleEdit = () => {
-		setIsEditing(!isEditing)
-	}
 	const handleDelete = async () => {
 		await deleteTask(task.id)
 	}
 
 	return (
-		<li className={styles.wrap}>
-			<div className={styles.completed}>
-				{task.resolved ? '完了済み' : '未完'}
-			</div>
-			{!isEditing ? (
-				<div className={styles.name}>{task.name}</div>
-			) : (
-				<Input value={task.name} />
-			)}
-			<time className={styles.time} dateTime={formatDateTime(task.createdAt)}>
-				{formatDateTime(task.createdAt)}
-			</time>
-			<Button onClick={handleEdit} className={styles.editButton}>
-				{isEditing ? '中断' : '編集'}
-			</Button>
-			<Button
-				onClick={handleDelete}
-				variant="error"
-				className={styles.deleteButton}
-			>
-				削除
-			</Button>
+		<li>
+			{JSON.stringify(task.resolved)}
+			<form {...getFormProps(form)} className={styles.wrap}>
+				<input
+					{...getInputProps(fields.resolved, { type: 'checkbox' })}
+					className={styles.resolved}
+				/>
+				<Input {...getInputProps(fields.name, { type: 'text' })} />
+				<time dateTime={formatDateTime(task.createdAt)}>
+					{formatDateTime(task.createdAt)}
+				</time>
+				<Button onClick={handleDelete} variant="error">
+					削除
+				</Button>
+			</form>
 		</li>
 	)
 }

@@ -33,6 +33,7 @@ export default function Form() {
 			await createTask(submission.value)
 		}
 	})
+
 	return (
 		<form {...getFormProps(form)} className={styles.form}>
 			<div className={styles.fieldWrap}>

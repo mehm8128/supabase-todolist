@@ -21,7 +21,7 @@ const editTask = async (id: TaskId, seed: TaskEditSeed): Promise<Task> => {
 export const useEditTask = () => {
 	const client = useQueryClient()
 
-	const mutation = useMutation({
+	const { mutateAsync } = useMutation({
 		mutationFn: ({ id, seed }: { id: TaskId; seed: TaskEditSeed }) =>
 			editTask(id, seed),
 		onSuccess: () => {
@@ -29,5 +29,5 @@ export const useEditTask = () => {
 		}
 	})
 
-	return mutation
+	return mutateAsync
 }

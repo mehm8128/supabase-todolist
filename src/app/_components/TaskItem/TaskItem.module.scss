@@ -5,13 +5,8 @@
 	grid-template-columns: repeat(5, auto);
 	gap: 0.75rem;
 }
-.name {
-}
-.completed {
-}
-.time {
-}
-.editButton {
-}
-.deleteButton {
+.resolved {
+	width: 1.5rem;
+	height: 1.5rem;
+	cursor: pointer;
 }
