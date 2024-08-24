@@ -1,5 +1,5 @@
-import { Button } from '@/components/Button'
-import { Input } from '@/components/Input'
+import { Button } from '@/components/Button/Button'
+import { Input } from '@/components/Input/Input'
 import { useDeleteTask } from '@/features/task/api/deleteTask'
 import type { Task } from '@/features/task/model/client'
 import { formatDateTime } from '@/lib/date'

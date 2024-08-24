@@ -1,7 +1,7 @@
 'use client'
 
-import { Button } from '@/components/Button'
-import { Input } from '@/components/Input'
+import { Button } from '@/components/Button/Button'
+import { Input } from '@/components/Input/Input'
 import { useCreateTask } from '@/features/task/api/createTask'
 import {
 	type TaskCreateSeed,

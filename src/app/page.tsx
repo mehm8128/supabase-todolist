@@ -1,6 +1,6 @@
 import SuspenseWithErrorBoundary from '@/components/SuspenseWithErrorBoundary'
-import Form from './_components/Form'
-import TaskList from './_components/TaskList'
+import Form from './_components/Form/Form'
+import TaskList from './_components/TaskList/TaskList'
 import styles from './page.module.scss'
 
 export default function Page() {

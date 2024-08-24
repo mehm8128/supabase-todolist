@@ -1,0 +1,17 @@
+.wrap {
+	width: fit-content;
+	display: grid;
+	place-items: center;
+	grid-template-columns: repeat(5, auto);
+	gap: 0.75rem;
+}
+.name {
+}
+.completed {
+}
+.time {
+}
+.editButton {
+}
+.deleteButton {
+}

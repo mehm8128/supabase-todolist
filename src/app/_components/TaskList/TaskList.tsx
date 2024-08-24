@@ -1,6 +1,6 @@
 'use client'
 
-import TaskItem from '@/app/_components/TaskItem'
+import TaskItem from '@/app/_components/TaskItem/TaskItem'
 import { useTaskList } from '@/features/task/api/fetchTasks'
 import styles from './TaskList.module.scss'
 
