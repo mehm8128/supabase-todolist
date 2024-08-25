@@ -10,11 +10,15 @@ export default function TaskList() {
 	return (
 		<div className={styles.wrap}>
 			<h1>Todo List</h1>
-			<ul className={styles.list}>
-				{tasks.map(task => (
-					<TaskItem key={task.id} task={task} />
-				))}
-			</ul>
+			{tasks.length === 0 ? (
+				<p>タスクはまだありません</p>
+			) : (
+				<ul className={styles.list}>
+					{tasks.map(task => (
+						<TaskItem key={task.id} task={task} />
+					))}
+				</ul>
+			)}
 		</div>
 	)
 }

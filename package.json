@@ -13,8 +13,8 @@
 		"type-check": "tsc --noEmit",
 		"gen:css": "hcm 'src/**/*.module.css' --watch",
 		"test": "vitest --passWithNoTests --typecheck",
-		"db:gen": "pnpm drizzle-kit generate:pg --config ./src/features/db/drizzle.config.ts",
-		"db:push": "pnpm drizzle-kit push:pg --config ./src/features/db/drizzle.config.ts"
+		"db:gen": "pnpm drizzle-kit generate --config ./src/features/db/drizzle.config.ts",
+		"db:push": "pnpm drizzle-kit push --config ./src/features/db/drizzle.config.ts"
 	},
 	"dependencies": {
 		"@conform-to/react": "^1.1.5",

@@ -24,7 +24,6 @@ export default function TaskItem({ task }: { task: Task }) {
 			const res = parseWithValibot(formData, {
 				schema: taskEditSeedSchema
 			})
-			console.log(res)
 			return res
 		},
 		async onSubmit(e, { submission }) {
@@ -44,16 +43,21 @@ export default function TaskItem({ task }: { task: Task }) {
 
 	return (
 		<li>
-			{JSON.stringify(task.resolved)}
 			<form {...getFormProps(form)} className={styles.wrap}>
 				<input
 					{...getInputProps(fields.resolved, { type: 'checkbox' })}
 					className={styles.resolved}
 				/>
-				<Input {...getInputProps(fields.name, { type: 'text' })} />
+				<Input
+					{...getInputProps(fields.name, { type: 'text' })}
+					checked={fields.name.value === 'on'}
+				/>
 				<time dateTime={formatDateTime(task.createdAt)}>
 					{formatDateTime(task.createdAt)}
 				</time>
+				<Button type="submit" variant="secondary">
+					保存
+				</Button>
 				<Button onClick={handleDelete} variant="error">
 					削除
 				</Button>

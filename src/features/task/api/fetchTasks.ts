@@ -16,7 +16,8 @@ export const fetchTaskList = async (
 		}
 	}
 	const res: TaskListData = await fetcher(
-		`${getApiOrigin()}/api/tasks?${queryParams}`
+		`${getApiOrigin()}/api/tasks?${queryParams}`,
+		{ cache: 'no-store' }
 	)
 
 	return res.map(convertTaskFromData)
