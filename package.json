@@ -26,7 +26,7 @@
 		"drizzle-valibot": "^0.2.0",
 		"jotai": "^2.9.3",
 		"neverthrow": "^7.0.1",
-		"next": "^14.2.6",
+		"next": "^14.2.7",
 		"postgres": "^3.4.4",
 		"react": "18.3.1",
 		"react-dom": "18.3.1",
